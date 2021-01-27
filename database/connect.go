@@ -1,9 +1,24 @@
 package database
 
 import (
+	"curso-go/api-echo-orm/entities"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
 )
+
+func ConnectAndMigrate() (*gorm.DB, error) {
+	db, err := Connect()
+	if err != nil {
+		return nil, err
+	}
+
+	err = Migrate(db)
+	if err != nil {
+		return nil, err
+	}
+
+	return db, nil
+}
 
 func Connect() (*gorm.DB, error) {
 	// TODO: mover credenciais e accesso pata
@@ -17,4 +32,14 @@ func Connect() (*gorm.DB, error) {
 	}
 
 	return db, nil
+}
+
+func Migrate(db *gorm.DB) error {
+	// Migrate the schema
+	err := db.AutoMigrate(&entities.User{})
+	if err != nil {
+		return err
+	}
+
+	return nil
 }

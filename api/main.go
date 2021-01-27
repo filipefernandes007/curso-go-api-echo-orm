@@ -11,7 +11,7 @@ import (
 const HttpApiPort = "9005"
 
 func main() {
-	db, err := database.Connect()
+	db, err := database.ConnectAndMigrate()
 	if err != nil {
 		panic(err)
 	}
