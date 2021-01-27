@@ -17,6 +17,11 @@ git clone https://github.com/filipefernandes007/curso-go-api-echo-orm.git
 cd curso-go-api-echo-orm
 ```
 
+#### Instalar dependências:
+```shell
+go mod tidy
+```
+
 ### Correr o docker
 ```shell
 docker-compose up 
