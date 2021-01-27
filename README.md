@@ -1,6 +1,5 @@
 ### Requisitos
 
-[MySQL 5.7](https://dev.mysql.com/downloads/windows/installer/5.7.html)
 [Docker](https://docs.docker.com/desktop/)
 
 ### Instalar
