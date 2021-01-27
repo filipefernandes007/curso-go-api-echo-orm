@@ -24,5 +24,8 @@ func CreateRoutes(db *gorm.DB) {
 	internalHandler := handlers.NewInternalHandler(e)
 	internalHandler.Healthy()
 
+	userHandler := handlers.NewUserHandler(e, db)
+	userHandler.GetUserByUsernameHandler()
+
 	e.Logger.Fatal(e.Start(fmt.Sprintf(":%s", HttpApiPort)))
 }
