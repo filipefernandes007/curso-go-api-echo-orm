@@ -21,7 +21,7 @@ func ConnectAndMigrate() (*gorm.DB, error) {
 }
 
 func Connect() (*gorm.DB, error) {
-	// TODO: mover credenciais e accesso pata
+	// TODO: mover credenciais e acesso para
 	// a) ficheiro yaml.
 	// b) variável de environment com o dsn completo.
 	// c) usar thrid-party tipo o Consul.

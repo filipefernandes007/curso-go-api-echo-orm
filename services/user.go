@@ -29,3 +29,25 @@ func (s UserService) GetByUsername(username string) (*entities.GetUserResponse, 
 
 	return &response, nil
 }
+
+func (s *UserService) Create(request *entities.CreateUserRequest) (*entities.CreateUserResponse, error) {
+	user := &entities.User{
+		Username: request.Username,
+	}
+
+	// does user already exist
+
+	repo := repository.NewUserRepository(s.db)
+	err := repo.Create(user)
+	if err != nil {
+		return nil, err
+	}
+
+	response := entities.CreateUserResponse{
+		ID:       user.ID,
+		Username: user.Username,
+	}
+
+	return &response, nil
+
+}

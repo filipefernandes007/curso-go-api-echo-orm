@@ -7,6 +7,7 @@ import (
 
 type IUser interface {
 	GetByUsername(username string) *entities.User
+	Create(user *entities.User) error
 }
 
 type UserRepository struct {
@@ -26,6 +27,15 @@ func (r UserRepository) GetByUsername(username string) *entities.User {
 	}
 
 	return user
+}
+
+func (repo *UserRepository) Create(user *entities.User) error {
+	result := repo.db.Create(user)
+	if result.Error != nil {
+		return result.Error
+	}
+
+	return nil
 }
 
 
