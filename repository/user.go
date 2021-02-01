@@ -5,6 +5,10 @@ import (
 	"gorm.io/gorm"
 )
 
+type IUser interface {
+	GetByUsername(username string) *entities.User
+}
+
 type UserRepository struct {
 	db *gorm.DB
 }
